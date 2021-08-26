@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "FlaskToDoList", "FlaskToDoList\FlaskToDoList.pyproj", "{E08067FB-646D-4860-AD7F-A997E815C99D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJob1", "WebJob1\WebJob1.csproj", "{8AA8CB08-DFDC-4A45-8A66-F808F5A87EE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E08067FB-646D-4860-AD7F-A997E815C99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E08067FB-646D-4860-AD7F-A997E815C99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E08067FB-646D-4860-AD7F-A997E815C99D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA8CB08-DFDC-4A45-8A66-F808F5A87EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA8CB08-DFDC-4A45-8A66-F808F5A87EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA8CB08-DFDC-4A45-8A66-F808F5A87EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA8CB08-DFDC-4A45-8A66-F808F5A87EE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

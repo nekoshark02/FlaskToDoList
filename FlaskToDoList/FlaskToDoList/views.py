@@ -16,7 +16,7 @@ def home():
         year=datetime.now().year,
     )
 
-@app.route('/contact')
+@app.route('/ToDo')
 def contact():
     """Renders the contact page."""
     return render_template(
