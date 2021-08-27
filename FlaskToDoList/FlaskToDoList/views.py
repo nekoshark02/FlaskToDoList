@@ -24,7 +24,6 @@ def contact():
         'contact.html',
         title='Contact',
         year=datetime.now().year,
-        message='Your contact page.'
     )
 
 @app.route('/about')
@@ -34,5 +33,17 @@ def about():
         'about.html',
         title='About',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='What is "Todui"?'
     )
+@app.route('/todo',methods=['GET','POST'])
+def todo():
+    """My ToDo Page."""
+    return render_template(
+        'todo.html',
+        title='My ToDo Page',
+        year=datetime.now().year,
+        message='Welcome to My ToDo Page.'
+        )
+def login():
+    return render_template
+

@@ -1,8 +1,18 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class=" jumbotron">
-    <h1>My ToDo Page</h1>
-    <h3>Welcome My ToDo page</h3>
-</div>
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<p>Make new ToDoList</p>
+<form action="/id">
+    <h3>username</h3>
+    <input type="text" name="username">
+</form>
+<form action="/pass">
+    <h3>password</h3>
+    <input type="text" name="password">
+</form>
+
 {% endblock %}
