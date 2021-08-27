@@ -30,6 +30,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FlaskToDoList\auth.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlaskToDoList\db.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="FlaskToDoList\__init__.py" />
     <Compile Include="FlaskToDoList\views.py" />
@@ -48,6 +54,9 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FlaskToDoList20210826214248 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ToDoList-Todui - Web Deploy.pubxml" />
+    <Content Include="FlaskToDoList\templates\login.html" />
+    <Content Include="FlaskToDoList\templates\logout.html" />
+    <Content Include="FlaskToDoList\templates\register.html" />
     <Content Include="FlaskToDoList\templates\todo.html" />
     <Content Include="FlaskToDoList\templates\userpage.html" />
     <Content Include="Properties\webjobs-list.json" />
