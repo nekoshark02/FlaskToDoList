@@ -311,8 +311,8 @@ html {
 }
 /*-------------------------------------------------------------------------*/
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: 'Franklin Gothic';
+    font-size: 16px;
     line-height: 1.428571429;
     color: ;
     background-color: #f7f7f7;
@@ -473,7 +473,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Franklin Gothic';
   font-weight: 500;
   line-height: 1.1;
 }
