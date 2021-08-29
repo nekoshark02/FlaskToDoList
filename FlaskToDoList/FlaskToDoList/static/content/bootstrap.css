@@ -315,7 +315,7 @@ body {
     font-size: 14px;
     line-height: 1.428571429;
     color: ;
-    background-color: #F6E5D7;
+    background-color: #f7f7f7;
 }
 /*--------------------------------------------------------------------------*/
 input,
@@ -4389,7 +4389,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+  color: #333;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -4501,26 +4501,27 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-    background-color: #ED8D49;
-    border-color: #FFC530;
+    background-color: #AADDDD;
+    border-color: #AADDDD;
 }
-
+/*-----------------------------------*/
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #333;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
-
+/*------------------------------------*/
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
   color: #ffffff;
   background-color: transparent;
 }
-
+/*---------------------------------------*/
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #333;
 }
-
+/*----------------------------------------*/
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #333;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -4928,13 +4929,14 @@ a.list-group-item.active > .badge,
 }
 /*-------------------------------------------*/
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 2.1428571435;
-  color: inherit;
-  background-color: #eeeeee;
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    color: inherit;
+    background-color: #eeeeee;
+    text-align: center;
 }
 /*-------------------------------------------*/
 .jumbotron h1 {
@@ -4949,7 +4951,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron p {
-  line-height: 1.4;
+  line-height: 5;
 }
 
 .container .jumbotron {
