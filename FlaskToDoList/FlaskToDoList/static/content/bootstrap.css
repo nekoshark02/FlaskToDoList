@@ -4398,9 +4398,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 
-.navbar-default .navbar-text {
-  color: #777777;
-}
+    .navbar-default .navbar-text {
+        color: #978D86;
+    }
 
 .navbar-default .navbar-nav > li > a {
   color: #777777;
@@ -4501,8 +4501,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+    background-color: #ED8D49;
+    border-color: #FFC530;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4926,7 +4926,7 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
-
+/*-------------------------------------------*/
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
@@ -4936,10 +4936,16 @@ a.list-group-item.active > .badge,
   color: inherit;
   background-color: #eeeeee;
 }
-
+/*-------------------------------------------*/
 .jumbotron h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   line-height: 1;
   color: inherit;
+  letter-spacing: 0.07em;
+}
+.jumbotron h3{
+    line-height: 1;
+    color: inherit;
 }
 
 .jumbotron p {
