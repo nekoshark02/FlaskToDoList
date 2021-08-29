@@ -58,7 +58,7 @@ html {
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
 a:focus {
@@ -309,15 +309,15 @@ html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
+/*-------------------------------------------------------------------------*/
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+    font-family: 'Franklin Gothic';
+    font-size: 16px;
+    line-height: 1.428571429;
+    color: ;
+    background-color: #f7f7f7;
 }
-
+/*--------------------------------------------------------------------------*/
 input,
 button,
 select,
@@ -473,7 +473,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Franklin Gothic';
   font-weight: 500;
   line-height: 1.1;
 }
@@ -3783,7 +3783,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn > .btn:active {
   z-index: 2;
 }
-
+/*-------------------------------------------------*/
 .nav {
   padding-left: 0;
   margin-bottom: 0;
@@ -4389,7 +4389,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+  color: #333;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -4398,9 +4398,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 
-.navbar-default .navbar-text {
-  color: #777777;
-}
+    .navbar-default .navbar-text {
+        color: #978D86;
+    }
 
 .navbar-default .navbar-nav > li > a {
   color: #777777;
@@ -4501,26 +4501,27 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+    background-color: #AADDDD;
+    border-color: #AADDDD;
 }
-
+/*-----------------------------------*/
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #333;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
-
+/*------------------------------------*/
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
   color: #ffffff;
   background-color: transparent;
 }
-
+/*---------------------------------------*/
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #333;
 }
-
+/*----------------------------------------*/
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #333;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -4926,24 +4927,31 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
-
+/*-------------------------------------------*/
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
-  font-size: 21px;
-  font-weight: 200;
-  line-height: 2.1428571435;
-  color: inherit;
-  background-color: #eeeeee;
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 2.1428571435;
+    color: inherit;
+    background-color: #eeeeee;
+    text-align: center;
 }
-
+/*-------------------------------------------*/
 .jumbotron h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   line-height: 1;
   color: inherit;
+  letter-spacing: 0.07em;
+}
+.jumbotron h3{
+    line-height: 1;
+    color: inherit;
 }
 
 .jumbotron p {
-  line-height: 1.4;
+  line-height: 5;
 }
 
 .container .jumbotron {

@@ -54,6 +54,7 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FlaskToDoList20210826214248 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ToDoList-Todui - Web Deploy.pubxml" />
+    <Content Include="FlaskToDoList\static\fonts\ICE-CS__.TTF" />
     <Content Include="FlaskToDoList\templates\login.html" />
     <Content Include="FlaskToDoList\templates\logout.html" />
     <Content Include="FlaskToDoList\templates\register.html" />
