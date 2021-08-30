@@ -8,7 +8,6 @@ from sqlalchemy import create_engine, Column, Table, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-
 app=Flask(__name__)
 
 import FlaskToDoList.views

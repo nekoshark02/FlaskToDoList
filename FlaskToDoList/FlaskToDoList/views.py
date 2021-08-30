@@ -8,23 +8,38 @@ from flask_login import current_user,login_user, login_required, LoginManager, U
 from FlaskToDoList import app
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+from flask_sqlalchemy import SQLAlchemy
 
 
 login = LoginManager()
 login.init_app(app)
-app.config['SECRET_KEY'] = 'secret_key'
+app.config['SECRET_KEY'] = 'secret'
 
-class User(UserMixin):
-    def __init__(self,user_id):
-        self.id = user_id
+db_uri = 'sqlite:///login.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+db = SQLAlchemy(app)
+####################謎エリア##################
 
+class User(UserMixin, db.Model):
+    __tablename__ = 'User'
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.Text())
+    password = db.Column(db.Text())
+    def __init__(self,username,password):
+        self.username = username
+        self.password = password
+
+db.create_all()
+
+###############################################
 class LoginForm(FlaskForm):
     username = StringField('username')
     password = StringField('password')
+    submit = SubmitField('login')
 
 @login.user_loader
 def load_user(user_id):
-    return User(user_id)
+    return User.query.get(int(user_id))
 
 
 @app.route('/')
@@ -90,16 +105,14 @@ def register():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm() #なんかでるwhy??????????
+    form = LoginForm() 
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.password.data).one_or_none()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password.')
-            return redirect(url_for('login'))
-        login_user(user,form,remember_me.data)
-        return redirect(url_for('index'))
+        if form.username.data == 'nabeou' and form.password.data == 'test':
+            user = User(form.username.data)
+            login_user(user)
+            return redirect('/logout')
+        else:
+            return 'Missed'
 
     return render_template(
         'login.html',
@@ -112,4 +125,5 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
