@@ -4,7 +4,7 @@ Routes and views for the flask application.
 import functools
 from datetime import datetime
 from flask import Flask, request, Response, abort, render_template, flash
-from flask_login import current_user,login_user
+from flask_login import current_user,login_user, login_required
 from FlaskToDoList import app
 
 @app.route('/')
@@ -74,7 +74,7 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).one_or_none()
+        user = User.query.filter_by(username='testuser').first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password.')
             return redirect(url_for('login'))
@@ -91,8 +91,8 @@ def login():
         year=datetime.now().year
         )
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
 
