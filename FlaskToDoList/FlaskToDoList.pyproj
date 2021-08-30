@@ -20,6 +20,7 @@
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -100,6 +101,10 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
       <AssemblyName>
@@ -155,4 +160,5 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets'))" />
   </Target>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
