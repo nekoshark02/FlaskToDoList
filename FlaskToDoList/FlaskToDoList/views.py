@@ -80,10 +80,6 @@ def login():
             return redirect(url_for('login'))
         login_user(user,form,remember_me.data)
         return redirect(url_for('index'))
- 
-
-        if not is_safe_url(next):
-            return flask.abort(400)
 
     return render_template(
         'login.html',

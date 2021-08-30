@@ -3,30 +3,25 @@ The flask application package.
 """
 
 from flask import Flask
-from flask_login import LoginManager,UserMixin
-from sqlalchemy import create_engine
+from flask_login import LoginManager,UserMixin,login_user, login_required, logout_user, current_user
+from sqlalchemy import create_engine, Column, Table, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 app=Flask(__name__)
 import FlaskToDoList.views
-engine = create_engine( 'sqlite://' )
+engine = create_engine( 'sqlite:///:memory:' )
 app.config['SECRET_KEY'] = 'secret_key'
-db = SQLAlchemy(app)
-login = LoginManager()
-login_manager.init_app(app)
+Base = declarative_base()
+login = LoginManager(app)
+login.login_view='login'
+#login_manager.login_message="Oops! Please try logging in"
 
-class User(UserMixin,db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(30),unique=True)
-    passowrd = db.Column(db.String(50),unique=True)
-
-db.create_all()
-#DBが空の状態(最初の1回)はtestuserを作成する
-user = User.query.filter_by(username='testuser').first()
-if user is None:
-    testuser = User(username='testuser', e_mail='test@test')
-    db.session.add(testuser)
-    db.session.commit()
+class User(Base):
+    __tablename__ = "user"
+    id = Column(Integer, primary_key = True)
+    username = Column(String(30),unique=True)
+    passowrd = Column(String(50),unique=True)
 
 
-@login_manager.user_loader
+@login.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get(int(id))
