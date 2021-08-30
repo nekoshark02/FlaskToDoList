@@ -31,9 +31,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FlaskToDoList\auth.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="FlaskToDoList\db.py">
       <SubType>Code</SubType>
     </Compile>

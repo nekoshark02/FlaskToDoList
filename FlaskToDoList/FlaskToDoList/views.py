@@ -5,20 +5,21 @@ import functools
 from datetime import datetime
 from flask import Flask, request, Response, abort, render_template, flash
 from flask_login import current_user,login_user, login_required, LoginManager, UserMixin
-from FlaskToDoList import app
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from flask_sqlalchemy import SQLAlchemy
+from wtforms.validators import ValidationError
+
+from FlaskToDoList import app
 
 
-login = LoginManager()
-login.init_app(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'secret'
 
-db_uri = 'sqlite:///login.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///login.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
-####################謎エリア##################
 
 class User(UserMixin, db.Model):
     __tablename__ = 'User'
@@ -31,13 +32,25 @@ class User(UserMixin, db.Model):
 
 db.create_all()
 
-###############################################
 class LoginForm(FlaskForm):
     username = StringField('username')
     password = StringField('password')
     submit = SubmitField('login')
 
-@login.user_loader
+class EntryForm(FlaskForm):
+    username = StringField('username')
+    password = StringField('password')
+    submit = SubmitField('register')
+
+    def validate_name(self, username):
+        if User.query.filter_by(username = username.data).one_or_none():
+            raise ValidationError('This username is already used! Please input other username.')
+
+    def validate_password(self, password):
+        if User.query.filter_by(password = password.data).one_or_none():
+            raise ValidationError('This password is already used! Please input other password.')
+
+@login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
@@ -82,35 +95,23 @@ def todo():
         year=datetime.now().year,
         message='Welcome to My ToDo Page.'
         )
-
-@app.route('/register',methods=['GET','POST'])
-def register():
-    """register page """
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        error = None
-
-        if not username:
-            error = 'Username is required.'
-        elif not password:
-            error = 'Password is required.'
-        flash(error)
-
+@app.route('/mytodo')
+def mytodo():
     return render_template(
-        'register.html',
-        title='Register',
-        year=datetime.now().year
+        'mytodo.html',
+        title='MyToDo',
+        year=datetime.now().year,
+        message='make your ToDoList'
         )
 
 @app.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm() 
     if form.validate_on_submit():
-        if form.username.data == 'nabeou' and form.password.data == 'test':
-            user = User(form.username.data)
+        if User.query.filter_by(username=form.username.data, password=form.password.data).one_or_none():
+            user = User.query.filter_by(username=form.username.data).one_or_none()
             login_user(user)
-            return redirect('/logout')
+            return redirect(url_for('/mytodo'))
         else:
             return 'Missed'
 
@@ -120,10 +121,17 @@ def login():
         year=datetime.now().year,
         form = form
         )
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return render_template(
+        'logout.html',
+        title='Logout',
+        year=datetime.now().year,
+        message ='Thank you for using Todui!'
+        )
+
 
 
