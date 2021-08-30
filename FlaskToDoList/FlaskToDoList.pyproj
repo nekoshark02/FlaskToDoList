@@ -37,6 +37,9 @@
     <Compile Include="FlaskToDoList\db.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FlaskToDoList\module.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="FlaskToDoList\__init__.py" />
     <Compile Include="FlaskToDoList\views.py" />
@@ -57,6 +60,7 @@
     <None Include="Properties\PublishProfiles\ToDoList-Todui - Web Deploy.pubxml" />
     <Content Include="FlaskToDoList\templates\login.html" />
     <Content Include="FlaskToDoList\templates\logout.html" />
+    <Content Include="FlaskToDoList\templates\mytodo.html" />
     <Content Include="FlaskToDoList\templates\register.html" />
     <Content Include="FlaskToDoList\templates\todo.html" />
     <Content Include="FlaskToDoList\templates\userpage.html" />

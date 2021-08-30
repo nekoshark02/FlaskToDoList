@@ -3,11 +3,12 @@ The flask application package.
 """
 
 from flask import Flask
-#from sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 app=Flask(__name__)
-
 import FlaskToDoList.views
 
-#db = SQLAlchemy
+login = LoginManager(app)
+login.login_view='login'
+
 

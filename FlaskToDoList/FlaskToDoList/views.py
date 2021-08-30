@@ -4,7 +4,7 @@ Routes and views for the flask application.
 import functools
 from datetime import datetime
 from flask import Flask, request, Response, abort, render_template, flash
-
+from flask_login import current_user,login_user
 from FlaskToDoList import app
 
 @app.route('/')
@@ -15,7 +15,7 @@ def home():
     return render_template(
         'index.html',
         title='Home Page',
-        year=datetime.now().year,
+        year=datetime.now().year
         
     )
 
@@ -25,7 +25,7 @@ def contact():
     return render_template(
         'contact.html',
         title='Contact',
-        year=datetime.now().year,
+        year=datetime.now().year
     )
 
 @app.route('/about')
@@ -70,21 +70,29 @@ def register():
 
 @app.route('/login',methods=['GET','POST'])
 def login():
-    if request.method == 'POST':
-       username = request.form['username']
-       password = request.form['password']
-       error = None
-       if user is None:
-            error = 'Incorrect username.'
-       ##elif not check_password_hash(user['password'], password):
-            #error = 'Incorrect password.'
-       flash(error)
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).one_or_none()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password.')
+            return redirect(url_for('login'))
+        login_user(user,form,remember_me.data)
+        return redirect(url_for('index'))
+ 
+
+        if not is_safe_url(next):
+            return flask.abort(400)
 
     return render_template(
         'login.html',
         title='Login',
         year=datetime.now().year
         )
-
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
