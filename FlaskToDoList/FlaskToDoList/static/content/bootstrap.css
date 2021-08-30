@@ -311,11 +311,11 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #f7f7f7;
 }
 
 input,
@@ -473,7 +473,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
 }
@@ -4501,12 +4501,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+  background-color: #AADDDD;
+  border-color: #AADDDD;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  color: #333;
 }
 
 .navbar-inverse .navbar-brand:hover,
@@ -4516,7 +4516,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-text {
-  color: #999999;
+  color: #333;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -4935,6 +4935,7 @@ a.list-group-item.active > .badge,
   line-height: 2.1428571435;
   color: inherit;
   background-color: #eeeeee;
+  text-align:center;
 }
 
 .jumbotron h1 {
@@ -4943,7 +4944,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron p {
-  line-height: 1.4;
+  line-height: 5;
 }
 
 .container .jumbotron {
