@@ -4192,6 +4192,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-brand {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   float: left;
   padding: 15px 15px;
   font-size: 18px;
@@ -4520,7 +4521,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  color: #333;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -4939,6 +4940,7 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron h1 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   line-height: 1;
   color: inherit;
 }
