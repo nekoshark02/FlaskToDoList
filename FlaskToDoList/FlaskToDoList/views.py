@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 import functools
 from datetime import datetime
-from flask import Flask, request, Response, abort, render_template, flash
+from flask import Flask, request, Response, abort, render_template, flash, redirect
 from flask_login import current_user,login_user, login_required, LoginManager, UserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -96,6 +96,7 @@ def todo():
         message='Welcome to My ToDo Page.'
         )
 @app.route('/mytodo')
+@login_required
 def mytodo():
     return render_template(
         'mytodo.html',
@@ -103,6 +104,18 @@ def mytodo():
         year=datetime.now().year,
         message='make your ToDoList'
         )
+@app.route('/register', methods=['GET','POST'])
+def register():
+  register = EntryForm()
+  if register.validate_on_submit():
+    newuser = User(username = register.username.data, password = register.password.data)
+    db.session.add(newuser)
+    db.session.commit()
+    return redirect('/login')
+  return render_template(
+      'register.html',
+      register=register
+      )
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -111,7 +124,7 @@ def login():
         if User.query.filter_by(username=form.username.data, password=form.password.data).one_or_none():
             user = User.query.filter_by(username=form.username.data).one_or_none()
             login_user(user)
-            return redirect(url_for('/mytodo'))
+            return redirect('/mytodo')
         else:
             return 'Missed'
 

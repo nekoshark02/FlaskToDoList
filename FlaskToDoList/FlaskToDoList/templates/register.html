@@ -5,11 +5,19 @@
 <h2>{{ title }}</h2>
 
 
-<form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
+<form method="POST" action="{{ url_for('register')}}">
+    {{ register.csrf_token }}
+
+    {{ register.username.label }}:{{ register.username }} <br>
+    {% for error in register.username.errors %}
+    <span style="color: red;">{{ error }}</span>
+    {% endfor %}<br>
+
+    {{ register.password.label }}:{{ register.password }}<br>
+    {% for error in register.password.errors %}
+    <span style="color: red;">{{ error }}</span>
+    {% endfor %}<br>
+
+    {{ register.submit }}
 </form>
-{% endblock %}
+<li><a href='/'>TOP‚É–ß‚é</a></li>
