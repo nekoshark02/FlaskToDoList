@@ -2,17 +2,18 @@
 Routes and views for the flask application.
 """
 import functools
+import os
+import sys
 from datetime import datetime
 from flask import Flask, request, Response, abort, render_template, flash, redirect
 from flask_login import current_user,login_user, login_required, LoginManager, UserMixin
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, PasswordField, validators, ValidationError
 from flask_sqlalchemy import SQLAlchemy
-from wtforms.validators import ValidationError
 
 from FlaskToDoList import app
 
-
+sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'secret'
@@ -34,21 +35,23 @@ db.create_all()
 
 class LoginForm(FlaskForm):
     username = StringField('username')
-    password = StringField('password')
+    password = PasswordField('password')
     submit = SubmitField('login')
+
 
 class EntryForm(FlaskForm):
     username = StringField('username')
-    password = StringField('password')
+    password = PasswordField('password')
     submit = SubmitField('register')
 
-    def validate_name(self, username):
+
+    def validate_name_and_password(self, username):
         if User.query.filter_by(username = username.data).one_or_none():
-            raise ValidationError('This username is already used! Please input other username.')
+            raise ValidationError('the')
 
     def validate_password(self, password):
         if User.query.filter_by(password = password.data).one_or_none():
-            raise ValidationError('This password is already used! Please input other password.')
+            raise ValidationError('the')
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -107,13 +110,23 @@ def mytodo():
 @app.route('/register', methods=['GET','POST'])
 def register():
   register = EntryForm()
-  if register.validate_on_submit():
-    newuser = User(username = register.username.data, password = register.password.data)
-    db.session.add(newuser)
-    db.session.commit()
-    return redirect('/login')
+
+  if request.method == "POST":
+
+      if register.validate_on_submit():
+        newuser = User(username = register.username.data, password = register.password.data)
+        db.session.add(newuser)
+        db.session.commit()
+        return redirect('/login')
+      else:
+        flash("false")
+        return redirect('/register')
+
   return render_template(
       'register.html',
+      title='Register',
+      year=datetime.now().year,
+      message='thank you for using Todui!',
       register=register
       )
 

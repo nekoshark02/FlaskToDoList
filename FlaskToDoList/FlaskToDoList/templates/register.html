@@ -4,20 +4,24 @@
 
 <h2>{{ title }}</h2>
 
-
 <form method="POST" action="{{ url_for('register')}}">
+ 
     {{ register.csrf_token }}
 
-    {{ register.username.label }}:{{ register.username }} <br>
+    {{ register.username.label }} : {{ register.username }}<br />
+
     {% for error in register.username.errors %}
     <span style="color: red;">{{ error }}</span>
-    {% endfor %}<br>
+    {% endfor %}<br />
 
-    {{ register.password.label }}:{{ register.password }}<br>
+    {{ register.password.label }} : {{ register.password }}<br />
+
     {% for error in register.password.errors %}
     <span style="color: red;">{{ error }}</span>
-    {% endfor %}<br>
+    {% endfor %}
 
     {{ register.submit }}
+  
 </form>
-<li><a href='/'>TOP‚É–ß‚é</a></li>
+
+{% endblock %}
