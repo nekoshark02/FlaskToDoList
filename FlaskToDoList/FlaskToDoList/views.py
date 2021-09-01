@@ -33,25 +33,38 @@ class User(UserMixin, db.Model):
 
 db.create_all()
 
+
+
 class LoginForm(FlaskForm):
-    username = StringField('username')
-    password = PasswordField('password')
+    username = StringField('username',validators=[
+        validators.DataRequired(message = 'hissu'),
+        validators.Length(min = 4,max = 20,message = '4to20')
+        ])
+    password = PasswordField('password', validators = [
+        validators.DataRequired(message = 'no'),
+        validators.AnyOf(values = ['password'], message = 'missed')
+        ])
     submit = SubmitField('login')
 
 
 class EntryForm(FlaskForm):
-    username = StringField('username')
-    password = PasswordField('password')
+    username = StringField('username',validators=[
+        validators.DataRequired(message = 'nn'),
+        validators.Length(min = 4, max = 20,message = 'hissu'),
+        ])
+    password = PasswordField('password',validators=[
+        validators.DataRequired(message = 'hissu'),
+        ])
     submit = SubmitField('register')
 
 
-    def validate_name_and_password(self, username):
-        if User.query.filter_by(username = username.data).one_or_none():
-            raise ValidationError('the')
+   # def validate_username(self, username):
+     #   if User.query.filter_by(username = username.data).one_or_none():
+      #      raise ValidationError('Cannot')
 
-    def validate_password(self, password):
-        if User.query.filter_by(password = password.data).one_or_none():
-            raise ValidationError('the')
+  #  def validate_password(self, password):
+       # if User.query.filter_by(password = password.data).one_or_none():
+        #    raise ValidationError('cannnot')
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -111,17 +124,11 @@ def mytodo():
 def register():
   register = EntryForm()
 
-  if request.method == "POST":
-
-      if register.validate_on_submit():
-        newuser = User(username = register.username.data, password = register.password.data)
-        db.session.add(newuser)
-        db.session.commit()
-        return redirect('/login')
-      else:
-        flash("false")
-        return redirect('/register')
-
+  if register.validate_on_submit():
+    newuser = User(username = register.username.data, password = register.password.data)
+    db.session.add(newuser)
+    db.session.commit()
+    return redirect('/login')
   return render_template(
       'register.html',
       title='Register',
