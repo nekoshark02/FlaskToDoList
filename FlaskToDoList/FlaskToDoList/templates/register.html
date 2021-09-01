@@ -2,14 +2,32 @@
 
 {% block content %}
 
+
 <h2>{{ title }}</h2>
 
 
-<form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Register">
+
+
+<form method="POST" action="{{ url_for('register')}}">
+ 
+    {{ register.csrf_token }}
+
+    {{ register.username.label }}{{ register.username(placeholder = "essential", size =20) }}<br />
+    <div>
+        {% for error in register.username.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}<br />
+    </div>
+
+    {{ register.password.label }}{{ register.password(placeholder = "essential", size = 20) }}<br />
+    <div>
+        {% for error in register.password.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
+    {{ register.submit }}
+  
 </form>
+
 {% endblock %}

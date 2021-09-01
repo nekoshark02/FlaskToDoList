@@ -20,6 +20,7 @@
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,10 +31,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FlaskToDoList\auth.py">
+    <Compile Include="FlaskToDoList\db.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FlaskToDoList\db.py">
+    <Compile Include="FlaskToDoList\module.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
@@ -54,11 +55,12 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FlaskToDoList20210826214248 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ToDoList-Todui - Web Deploy.pubxml" />
+    <Content Include="FlaskToDoList\templates\error.html" />
     <Content Include="FlaskToDoList\templates\login.html" />
     <Content Include="FlaskToDoList\templates\logout.html" />
+    <Content Include="FlaskToDoList\templates\mytodo.html" />
     <Content Include="FlaskToDoList\templates\register.html" />
     <Content Include="FlaskToDoList\templates\todo.html" />
-    <Content Include="FlaskToDoList\templates\userpage.html" />
     <Content Include="Properties\webjobs-list.json" />
     <Content Include="requirements.txt" />
     <Content Include="FlaskToDoList\static\content\bootstrap.css" />
@@ -100,6 +102,10 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
       <AssemblyName>
@@ -155,4 +161,5 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebJobs.Publish.2.0.0\build\Microsoft.Web.WebJobs.Publish.targets'))" />
   </Target>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>
